@@ -66,7 +66,38 @@ end
             eoc = compute_eoc(dts, errors)
             @test isapprox(eoc, order; atol = 0.1)
         end
-    end # DIRK methods
+    end 
+    
+     @testset "CooperSayfy5" begin
+            alg = Theseus.CooperSayfy5()
+            order = 5
+            dts = 2.0 .^ (-2:-1:-6)
+            errors = compute_errors(ode, u_ana, alg, dts)
+            eoc = compute_eoc(dts, errors)
+            @test isapprox(eoc, order; atol = 0.1)
+        end
+    end
+
+     @testset "HairerWannerSDIRK4" begin
+            alg = Theseus.HairerWannerSDIRK4()
+            order = 4
+            dts = 2.0 .^ (-2:-1:-6)
+            errors = compute_errors(ode, u_ana, alg, dts)
+            eoc = compute_eoc(dts, errors)
+            @test isapprox(eoc, order; atol = 0.1)
+        end
+    end
+
+     @testset "CrouzeixRaviart34" begin
+            alg = Theseus.CrouzeixRaviart34()
+            order = 5
+            dts = 2.0 .^ (-2:-1:-6)
+            errors = compute_errors(ode, u_ana, alg, dts)
+            eoc = compute_eoc(dts, errors)
+            @test isapprox(eoc, order; atol = 0.1)
+        end
+    end
+    # DIRK methods
 
     @testset "Rosenbrock methods" begin
         @testset "SSPKnoth" begin
