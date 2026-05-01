@@ -101,16 +101,15 @@ function RKTableau(alg::DIRK43, RealT)
 end
 
 """
-CooperSayfy5
+    CooperSayfy5
 A 5th-order, 5-stage, A-stable DIRK method.
 
 ## References
--E. Hairer, G. Wanner. Solving ordinary differential equations II: Stiff and Differential-Algebraic Problems.
-Springer, 1996. page.101
+- E. Hairer, G. Wanner. Solving ordinary differential equations II: Stiff and Differential-Algebraic Problems.
+  Springer, 1996. 
+  page.101
 """
-
 struct CooperSayfy5 <: DIRK{5} end
-
 function RKTableau(alg::CooperSayfy5, RealT)
     nstage = 5
     sqrt6 = sqrt(convert(RealT, 6))
@@ -158,16 +157,15 @@ end
 
 
 """
-HairerWannerSDIRK4
+    HairerWannerSDIRK4()
 A 4th-order, 5-stage, L-stable SDIRK method.
 
 ## References
--E. Hairer, G. Wanner. Solving ordinary differential equations II: Stiff and Differential-Algebraic Problems.
-Springer, 1996. page.100
+- E. Hairer, G. Wanner. Solving ordinary differential equations II: Stiff and Differential-Algebraic Problems.
+  Springer, 1996. 
+  page. 100
 """
-
 struct HairerWannerSDIRK4 <: DIRK{5} end
-
 function RKTableau(alg::HairerWannerSDIRK4, RealT)
     nstage = 5
     a = zeros(RealT, nstage, nstage)
@@ -213,16 +211,15 @@ end
 
 
 """
-CrouzeixRaviart34
+    CrouzeixRaviart34
 A 4th-order, 3-stage, L-stable SDIRK method.
 
 ## References
--E. Hairer, G. Wanner. Solving ordinary differential equations II: Stiff and Differential-Algebraic Problems.
-Springer, 1996. page.100
+- E. Hairer, G. Wanner. Solving ordinary differential equations II: Stiff and Differential-Algebraic Problems.
+  Springer, 1996. 
+  page.100
 """
-
 struct CrouzeixRaviart34 <: DIRK{3} end
-
 function RKTableau(alg::CrouzeixRaviart34, RealT)
     nstage = 3
     
