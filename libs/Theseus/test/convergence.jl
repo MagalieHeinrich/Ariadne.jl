@@ -67,9 +67,9 @@ end
             @test isapprox(eoc, order; atol = 0.1)
         end
 
-        @testset "Crouzeix32" begin
-            alg = Theseus.Crouzeix32()
-            order = 3 + 1 # Gaussian quadrature
+        @testset "CrouzeixRaviart34" begin
+            alg = Theseus.CrouzeixRaviart34()
+            order = 4
             dts = 2.0 .^ (-2:-1:-6)
             errors = compute_errors(ode, u_ana, alg, dts)
             eoc = compute_eoc(dts, errors)
